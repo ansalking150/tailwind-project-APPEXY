@@ -3,318 +3,397 @@
 
 <head>
     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appexy - Manage Your Activity</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
-
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* ============================================
-           APPEXY ADVANCED ANIMATIONS
-           ============================================ */
-
-        /* Fade in on page load */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Pulse animation for buttons */
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        /* Float animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* Glow effect */
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6); }
-        }
-
-        /* Bounce in */
-        @keyframes bounceIn {
-            0% { opacity: 0; transform: scale(0.3); }
-            50% { opacity: 1; transform: scale(1.05); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-        }
-
-        /* ============================================
-           APPLY ANIMATIONS TO ELEMENTS
-           ============================================ */
-
-        /* Header animations */
-        header {
-            animation: slideDown 0.6s ease-out;
-        }
-
-        header > div:first-child {
-            animation: fadeInLeft 0.8s ease-out;
-        }
-
-        header nav a {
-            animation: fadeIn 0.8s ease-out backwards;
-        }
-
-        header nav a:nth-child(1) { animation-delay: 0.1s; }
-        header nav a:nth-child(2) { animation-delay: 0.2s; }
-        header nav a:nth-child(3) { animation-delay: 0.3s; }
-        header nav a:nth-child(4) { animation-delay: 0.4s; }
-        header nav a:nth-child(5) { animation-delay: 0.5s; }
-        header nav a:nth-child(6) { animation-delay: 0.6s; }
-
-        /* Hero section */
-        section:first-of-type .left {
-            animation: fadeInLeft 1s ease-out 0.3s backwards;
-        }
-
-        section:first-of-type img {
-            animation: fadeInRight 1s ease-out 0.3s backwards, float 3s ease-in-out infinite 1.3s;
-        }
-
-        section:first-of-type h1 {
-            animation: fadeIn 0.8s ease-out 0.5s backwards;
-        }
-
-        section:first-of-type p {
-            animation: fadeIn 0.8s ease-out 0.7s backwards;
-        }
-
-        section:first-of-type .flex.gap-4 {
-            animation: fadeIn 0.8s ease-out 0.9s backwards;
-        }
-
-        /* Button hover effects */
-        a[class*="bg-blue"], button[class*="bg-blue"] {
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        a[class*="bg-blue"]:hover, button[class*="bg-blue"]:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
-        }
-
-        a[class*="bg-blue"]::before, button[class*="bg-blue"]::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        a[class*="bg-blue"]:hover::before, button[class*="bg-blue"]:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Features section */
-        section:nth-of-type(2) h6,
-        section:nth-of-type(2) h1,
-        section:nth-of-type(2) p {
-            animation: fadeIn 0.8s ease-out backwards;
-        }
-
-        section:nth-of-type(2) img {
-            animation: fadeInLeft 1s ease-out 0.4s backwards;
-        }
-
-        section:nth-of-type(2) .rounded-xl {
-            animation: fadeInRight 1s ease-out 0.4s backwards;
-        }
-
-        section:nth-of-type(2) .flex.items-start {
-            animation: fadeIn 0.6s ease-out backwards;
-        }
-
-        section:nth-of-type(2) .flex.items-start:nth-of-type(1) { animation-delay: 0.6s; }
-        section:nth-of-type(2) .flex.items-start:nth-of-type(2) { animation-delay: 0.8s; }
-        section:nth-of-type(2) .flex.items-start:nth-of-type(3) { animation-delay: 1s; }
-
-        /* Icon animations */
-        .fa-stack {
-            transition: transform 0.3s ease;
-        }
-
-        .flex.items-start:hover .fa-stack {
-            transform: rotate(360deg) scale(1.1);
-        }
-
-        /* Pricing cards */
-        article .card1,
-        article .card2,
-        article .card3 {
-            animation: bounceIn 0.8s ease-out backwards;
-            transition: all 0.4s ease;
-        }
-
-        article .card1 { animation-delay: 0.2s; }
-        article .card2 { animation-delay: 0.4s; }
-        article .card3 { animation-delay: 0.6s; }
-
-        article .card1:hover,
-        article .card3:hover {
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
-            border-color: rgb(59, 130, 246);
-        }
-
-        article .card2 {
-            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
-        }
-
-        article .card2:hover {
-            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.4);
-            transform: scale(1.05) translateY(-10px);
-        }
-
-        /* Contact form animations */
-        form input,
-        form textarea {
-            transition: all 0.3s ease;
-        }
-
-        form input:focus,
-        form textarea:focus {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-            border-color: rgb(59, 130, 246);
-            outline: none;
-        }
-
-        /* Footer animation */
-        footer {
-            animation: fadeIn 1s ease-out;
-        }
-
-        footer > div > div {
-            animation: fadeIn 0.8s ease-out backwards;
-        }
-
-        footer > div > div:nth-child(1) { animation-delay: 0.1s; }
-        footer > div > div:nth-child(2) { animation-delay: 0.2s; }
-        footer > div > div:nth-child(3) { animation-delay: 0.3s; }
-        footer > div > div:nth-child(4) { animation-delay: 0.4s; }
-        footer > div > div:nth-child(5) { animation-delay: 0.5s; }
-
-        /* Social icons hover */
-        footer a[class*="fab"] {
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        footer a[class*="fab"]:hover {
-            transform: translateY(-5px) scale(1.2);
-            color: rgb(59, 130, 246);
-        }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Dark mode toggle animation */
-        #darkToggle:checked + div {
-            animation: pulse 0.3s ease;
-        }
-
-        /* Link underline animation */
-        nav a {
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: rgb(59, 130, 246);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Pricing toggle animation */
-        article button {
-            transition: all 0.3s ease;
-        }
-
-        /* Contact info hover effects */
-        section:has(form) i {
-            transition: transform 0.3s ease;
-        }
-
-        section:has(form) .flex.items-center:hover i {
-            transform: scale(1.3) rotate(10deg);
-        }
-
-        /* Image zoom effect on hover */
-        img {
-            transition: transform 0.5s ease;
-        }
-
-        /* List items fade in */
-        ul li {
-            animation: fadeInLeft 0.5s ease-out backwards;
-        }
-
-        article ul li:nth-child(1) { animation-delay: 0.1s; }
-        article ul li:nth-child(2) { animation-delay: 0.2s; }
-        article ul li:nth-child(3) { animation-delay: 0.3s; }
-        article ul li:nth-child(4) { animation-delay: 0.4s; }
-        article ul li:nth-child(5) { animation-delay: 0.5s; }
-
-        /* Reduce motion for users who prefer it */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appexy - Manage Your Activity</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
     <link rel="stylesheet" href="./src/css/output.css">
+    <style>
+       
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+
+header {
+    animation: slideDown 0.6s ease-out;
+}
+
+header > div:first-child {
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+header nav a {
+    animation: fadeIn 0.8s ease-out backwards;
+}
+
+header nav a:nth-child(1) { animation-delay: 0.1s; }
+header nav a:nth-child(2) { animation-delay: 0.2s; }
+header nav a:nth-child(3) { animation-delay: 0.3s; }
+header nav a:nth-child(4) { animation-delay: 0.4s; }
+header nav a:nth-child(5) { animation-delay: 0.5s; }
+header nav a:nth-child(6) { animation-delay: 0.6s; }
+
+
+section:first-of-type .left {
+    animation: fadeInLeft 1s ease-out 0.3s backwards;
+}
+
+section:first-of-type img {
+    animation: fadeInRight 1s ease-out 0.3s backwards, float 3s ease-in-out infinite 1.3s;
+}
+
+section:first-of-type h1 {
+    animation: fadeIn 0.8s ease-out 0.5s backwards;
+}
+
+section:first-of-type p {
+    animation: fadeIn 0.8s ease-out 0.7s backwards;
+}
+
+section:first-of-type .flex.gap-4 {
+    animation: fadeIn 0.8s ease-out 0.9s backwards;
+}
+
+/* ============================================
+   BUTTON EFFECTS
+   ============================================ */
+
+a[class*="bg-blue"],
+button[class*="bg-blue"],
+a[class*="bg-pink"],
+button[class*="bg-pink"] {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+a[class*="bg-blue"]:hover,
+button[class*="bg-blue"]:hover,
+a[class*="bg-pink"]:hover,
+button[class*="bg-pink"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+}
+
+a[class*="bg-blue"]::before,
+button[class*="bg-blue"]::before,
+a[class*="bg-pink"]::before,
+button[class*="bg-pink"]::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+a[class*="bg-blue"]:hover::before,
+button[class*="bg-blue"]:hover::before,
+a[class*="bg-pink"]:hover::before,
+button[class*="bg-pink"]:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+
+
+section:nth-of-type(2) h6,
+section:nth-of-type(2) h1,
+section:nth-of-type(2) p {
+    animation: fadeIn 0.8s ease-out backwards;
+}
+
+section:nth-of-type(2) img {
+    animation: fadeInLeft 1s ease-out 0.4s backwards;
+}
+
+section:nth-of-type(2) .rounded-xl {
+    animation: fadeInRight 1s ease-out 0.4s backwards;
+}
+
+section:nth-of-type(2) .flex.items-start {
+    animation: fadeIn 0.6s ease-out backwards;
+}
+
+section:nth-of-type(2) .flex.items-start:nth-of-type(1) { animation-delay: 0.6s; }
+section:nth-of-type(2) .flex.items-start:nth-of-type(2) { animation-delay: 0.8s; }
+section:nth-of-type(2) .flex.items-start:nth-of-type(3) { animation-delay: 1s; }
+
+/* ============================================
+   ICON ANIMATIONS
+   ============================================ */
+
+.fa-stack {
+    transition: transform 0.3s ease;
+}
+
+.flex.items-start:hover .fa-stack {
+    transform: rotate(360deg) scale(1.1);
+}
+
+/* ============================================
+   PRICING CARDS
+   ============================================ */
+
+article .card1,
+article .card2,
+article .card3 {
+    animation: bounceIn 0.8s ease-out backwards;
+    transition: all 0.4s ease;
+}
+
+article .card1 { animation-delay: 0.2s; }
+article .card2 { animation-delay: 0.4s; }
+article .card3 { animation-delay: 0.6s; }
+
+article .card1:hover,
+article .card3:hover {
+    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+    border-color: rgb(59, 130, 246);
+}
+
+article .card2 {
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+}
+
+article .card2:hover {
+    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.4);
+    transform: scale(1.05) translateY(-10px);
+}
+
+/* ============================================
+   CONTACT FORM ANIMATIONS
+   ============================================ */
+
+form input,
+form textarea {
+    transition: all 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+    border-color: rgb(59, 130, 246);
+    outline: none;
+}
+
+/* ============================================
+   FOOTER ANIMATION
+   ============================================ */
+
+footer {
+    animation: fadeIn 1s ease-out;
+}
+
+footer > div > div {
+    animation: fadeIn 0.8s ease-out backwards;
+}
+
+footer > div > div:nth-child(1) { animation-delay: 0.1s; }
+footer > div > div:nth-child(2) { animation-delay: 0.2s; }
+footer > div > div:nth-child(3) { animation-delay: 0.3s; }
+footer > div > div:nth-child(4) { animation-delay: 0.4s; }
+footer > div > div:nth-child(5) { animation-delay: 0.5s; }
+
+/* ============================================
+   SOCIAL ICONS
+   ============================================ */
+
+footer .fab,
+footer .fa-facebook-f,
+footer .fa-twitter,
+footer .fa-linkedin-in,
+footer .fa-skype {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+footer a:hover .fab,
+footer a:hover .fa-facebook-f,
+footer a:hover .fa-twitter,
+footer a:hover .fa-linkedin-in,
+footer a:hover .fa-skype {
+    transform: translateY(-5px) scale(1.2);
+}
+
+/* ============================================
+   NAVIGATION EFFECTS
+   ============================================ */
+
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: rgb(59, 130, 246);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ============================================
+   CONTACT INFO HOVER
+   ============================================ */
+
+section:has(form) i {
+    transition: transform 0.3s ease;
+}
+
+section:has(form) .flex.items-center:hover i {
+    transform: scale(1.3) rotate(10deg);
+}
+
+/* ============================================
+   IMAGE EFFECTS
+   ============================================ */
+
+img {
+    transition: transform 0.5s ease;
+}
+
+/* ============================================
+   LIST ANIMATIONS
+   ============================================ */
+
+ul li {
+    animation: fadeInLeft 0.5s ease-out backwards;
+}
+
+article ul li:nth-child(1) { animation-delay: 0.1s; }
+article ul li:nth-child(2) { animation-delay: 0.2s; }
+article ul li:nth-child(3) { animation-delay: 0.3s; }
+article ul li:nth-child(4) { animation-delay: 0.4s; }
+article ul li:nth-child(5) { animation-delay: 0.5s; }
+
+/* ============================================
+   GLOBAL EFFECTS
+   ============================================ */
+
+html {
+    scroll-behavior: smooth;
+}
+
+#darkToggle:checked + div {
+    animation: pulse 0.3s ease;
+}
+
+article button {
+    transition: all 0.3s ease;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+    </style>
 </head>
 
 <body class="text-capitalize dark:bg-black font-serif w-full">
@@ -379,7 +458,8 @@ px-4 md:px-20 py-16">
                 <h1 class="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white">
                     Manage Your Activity<br> With <span class="text-blue-600">Appexy</span>
                 </h1>
-                <p class="text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea deleniti
+                <p class="text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea
+                    deleniti
                     consectetur earum accusamus dolor, tempore in blanditiis quo voluptatibus enim.</p>
                 <div class="flex gap-4">
                     <a href="#" class="px-6 py-3 bg-blue-600 rounded-md text-white hover:bg-blue-700 transition">Get
@@ -390,7 +470,7 @@ dark:hover:bg-gray-800 dark:text-white transition duration-300">Download App</a>
                 </div>
             </div>
             <img src="./src/images/hero-2-img.e00536899165fc0261f3.png" alt="Hero Image"
-                class="w-full max-w-sm mx-auto rounded-xl transition-transform duration-500 hover:scale-y-105" />
+                class="w-full max-w-sm mx-auto rounded-xl transition-transform duration-500 " />
 
         </div>
     </section>
@@ -400,11 +480,12 @@ dark:hover:bg-gray-800 dark:text-white transition duration-300">Download App</a>
         <p class="dark:text-gray-300">Lorem ipsum dolor sit, e neque maxime enim culpa quod earum odio <br> eligendi
             molestiae voluptas.</p>
         <div class="flex flex-col lg:flex-row justify-center items-center gap-6 mt-10 px-4">
-            <div class="w-full lg:w-1/2 px-4">
-                <img class="w-1/2 max-w-md mx-auto hover:scale-110 transition-all duration-500"
+            <div class=" w-full lg:w-1/2 px-4">
+                <img class="w-1/2 max-w-md mx-auto  transition-all duration-500"
                     src="./src/images/features-1.bc7b2e31dc2030c17a64.png" alt="">
             </div>
-            <div class="w-full lg:w-1/2 rounded-xl h-auto p-6 bg-indigo-50 dark:bg-gray-800 space-y-4 mr-5 text-left hover:shadow-blue-500 shadow-lg  hover:scale-105 transition-all duration-500 ">
+            <div
+                class="w-full lg:w-1/2 rounded-xl h-auto p-6 bg-indigo-50 dark:bg-gray-800 space-y-4 mr-5 text-left hover:shadow-blue-500 shadow-lg  hover:scale-105 transition-all duration-500 ">
                 <h3 class="text-2xl font-semibold text-gray-800 dark:text-white">
                     Discover your destination
                 </h3>
@@ -584,53 +665,55 @@ rounded-full">Most Popular</div>
             </div>
             <!-- Right Side: Contact Form -->
             <form id="contactForm">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                    <input type="text" id="firstName" placeholder="Your first name..." 
-                        class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
-                    <p id="firstName-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input type="text" id="firstName" placeholder="Your first name..."
+                            class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
+                        <p id="firstName-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
+                    </div>
+                    <div>
+                        <input type="text" id="lastName" placeholder="Your last name..."
+                            class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
+                        <p id="lastName-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
+                    </div>
                 </div>
-                <div>
-                    <input type="text" id="lastName" placeholder="Your last name..."
-                        class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
-                    <p id="lastName-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <input type="text" id="email" placeholder="Your email..."
+                            class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
+                        <p id="email-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
+                    </div>
+                    <div>
+                        <input type="text" id="phone" placeholder="Type phone number..."
+                            class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
+                        <p id="phone-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                    <input type="text" id="email" placeholder="Your email..." 
+                <div class="mb-4">
+                    <input type="text" id="subject" placeholder="Type subject..."
                         class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
-                    <p id="email-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
+                    <p id="subject-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
                 </div>
-                <div>
-                    <input type="text" id="phone" placeholder="Type phone number..."
-                        class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
-                    <p id="phone-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
+
+                <div class="mb-6">
+                    <textarea rows="5" id="message" placeholder="Type messages..."
+                        class="w-full p-3 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white"></textarea>
+                    <p id="message-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
                 </div>
+
+                <button type="submit"
+                    class="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-2 rounded shadow transition flex items-center">
+                    SEND MESSAGE <i class="fas fa-paper-plane ml-2"></i>
+                </button>
+            </form>
+
+            <div id="successMessage"
+                class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                Form submitted successfully!
             </div>
-
-            <div class="mb-4">
-                <input type="text" id="subject" placeholder="Type subject..." 
-                    class="w-full px-4 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white">
-                <p id="subject-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
-            </div>
-
-            <div class="mb-6">
-                <textarea rows="5" id="message" placeholder="Type messages..."
-                    class="w-full p-3 py-2 border rounded dark:bg-gray-900 dark:border-gray-700 dark:text-white"></textarea>
-                <p id="message-error" class="text-red-500 text-sm mt-1 min-h-[20px]"></p>
-            </div>
-
-            <button type="submit" class="bg-pink-600 hover:bg-pink-700 text-white font-semibold px-6 py-2 rounded shadow transition flex items-center">
-                SEND MESSAGE <i class="fas fa-paper-plane ml-2"></i>
-            </button>
-        </form>
-
-        <div id="successMessage" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
-            Form submitted successfully!
         </div>
-    </div>
         </div>
     </section>
     <footer class="bg-gray-800 dark:bg-gray-900 text-gray-300 dark:text-gray-400 
@@ -706,4 +789,5 @@ text-sm">
     </footer>
     <script src="./src/js/man.js "></script>
 </body>
+
 </html>
