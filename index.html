@@ -7,392 +7,11 @@
     <title>Appexy - Manage Your Activity</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css">
     <link rel="stylesheet" href="./src/css/output.css">
+    <link rel="stylesheet" href="./src/css/style.css">
     <style>
        
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-@keyframes fadeInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
-    }
-}
-
-@keyframes bounceIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.3);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-    70% {
-        transform: scale(0.9);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-
-
-header {
-    animation: slideDown 0.6s ease-out;
-}
-
-header > div:first-child {
-    animation: fadeInLeft 0.8s ease-out;
-}
-
-header nav a {
-    animation: fadeIn 0.8s ease-out backwards;
-}
-
-header nav a:nth-child(1) { animation-delay: 0.1s; }
-header nav a:nth-child(2) { animation-delay: 0.2s; }
-header nav a:nth-child(3) { animation-delay: 0.3s; }
-header nav a:nth-child(4) { animation-delay: 0.4s; }
-header nav a:nth-child(5) { animation-delay: 0.5s; }
-header nav a:nth-child(6) { animation-delay: 0.6s; }
-
-
-section:first-of-type .left {
-    animation: fadeInLeft 1s ease-out 0.3s backwards;
-}
-
-section:first-of-type img {
-    animation: fadeInRight 1s ease-out 0.3s backwards, float 3s ease-in-out infinite 1.3s;
-}
-
-section:first-of-type h1 {
-    animation: fadeIn 0.8s ease-out 0.5s backwards;
-}
-
-section:first-of-type p {
-    animation: fadeIn 0.8s ease-out 0.7s backwards;
-}
-
-section:first-of-type .flex.gap-4 {
-    animation: fadeIn 0.8s ease-out 0.9s backwards;
-}
-
-/* ============================================
-   BUTTON EFFECTS
-   ============================================ */
-
-a[class*="bg-blue"],
-button[class*="bg-blue"],
-a[class*="bg-pink"],
-button[class*="bg-pink"] {
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-a[class*="bg-blue"]:hover,
-button[class*="bg-blue"]:hover,
-a[class*="bg-pink"]:hover,
-button[class*="bg-pink"]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
-}
-
-a[class*="bg-blue"]::before,
-button[class*="bg-blue"]::before,
-a[class*="bg-pink"]::before,
-button[class*="bg-pink"]::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-a[class*="bg-blue"]:hover::before,
-button[class*="bg-blue"]:hover::before,
-a[class*="bg-pink"]:hover::before,
-button[class*="bg-pink"]:hover::before {
-    width: 300px;
-    height: 300px;
-}
-
-
-
-section:nth-of-type(2) h6,
-section:nth-of-type(2) h1,
-section:nth-of-type(2) p {
-    animation: fadeIn 0.8s ease-out backwards;
-}
-
-section:nth-of-type(2) img {
-    animation: fadeInLeft 1s ease-out 0.4s backwards;
-}
-
-section:nth-of-type(2) .rounded-xl {
-    animation: fadeInRight 1s ease-out 0.4s backwards;
-}
-
-section:nth-of-type(2) .flex.items-start {
-    animation: fadeIn 0.6s ease-out backwards;
-}
-
-section:nth-of-type(2) .flex.items-start:nth-of-type(1) { animation-delay: 0.6s; }
-section:nth-of-type(2) .flex.items-start:nth-of-type(2) { animation-delay: 0.8s; }
-section:nth-of-type(2) .flex.items-start:nth-of-type(3) { animation-delay: 1s; }
-
-/* ============================================
-   ICON ANIMATIONS
-   ============================================ */
-
-.fa-stack {
-    transition: transform 0.3s ease;
-}
-
-.flex.items-start:hover .fa-stack {
-    transform: rotate(360deg) scale(1.1);
-}
-
-/* ============================================
-   PRICING CARDS
-   ============================================ */
-
-article .card1,
-article .card2,
-article .card3 {
-    animation: bounceIn 0.8s ease-out backwards;
-    transition: all 0.4s ease;
-}
-
-article .card1 { animation-delay: 0.2s; }
-article .card2 { animation-delay: 0.4s; }
-article .card3 { animation-delay: 0.6s; }
-
-article .card1:hover,
-article .card3:hover {
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
-    border-color: rgb(59, 130, 246);
-}
-
-article .card2 {
-    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
-}
-
-article .card2:hover {
-    box-shadow: 0 25px 50px rgba(59, 130, 246, 0.4);
-    transform: scale(1.05) translateY(-10px);
-}
-
-/* ============================================
-   CONTACT FORM ANIMATIONS
-   ============================================ */
-
-form input,
-form textarea {
-    transition: all 0.3s ease;
-}
-
-form input:focus,
-form textarea:focus {
-    transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-    border-color: rgb(59, 130, 246);
-    outline: none;
-}
-
-/* ============================================
-   FOOTER ANIMATION
-   ============================================ */
-
-footer {
-    animation: fadeIn 1s ease-out;
-}
-
-footer > div > div {
-    animation: fadeIn 0.8s ease-out backwards;
-}
-
-footer > div > div:nth-child(1) { animation-delay: 0.1s; }
-footer > div > div:nth-child(2) { animation-delay: 0.2s; }
-footer > div > div:nth-child(3) { animation-delay: 0.3s; }
-footer > div > div:nth-child(4) { animation-delay: 0.4s; }
-footer > div > div:nth-child(5) { animation-delay: 0.5s; }
-
-/* ============================================
-   SOCIAL ICONS
-   ============================================ */
-
-footer .fab,
-footer .fa-facebook-f,
-footer .fa-twitter,
-footer .fa-linkedin-in,
-footer .fa-skype {
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-footer a:hover .fab,
-footer a:hover .fa-facebook-f,
-footer a:hover .fa-twitter,
-footer a:hover .fa-linkedin-in,
-footer a:hover .fa-skype {
-    transform: translateY(-5px) scale(1.2);
-}
-
-/* ============================================
-   NAVIGATION EFFECTS
-   ============================================ */
-
-nav a {
-    position: relative;
-}
-
-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: rgb(59, 130, 246);
-    transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-    width: 100%;
-}
-
-/* ============================================
-   CONTACT INFO HOVER
-   ============================================ */
-
-section:has(form) i {
-    transition: transform 0.3s ease;
-}
-
-section:has(form) .flex.items-center:hover i {
-    transform: scale(1.3) rotate(10deg);
-}
-
-/* ============================================
-   IMAGE EFFECTS
-   ============================================ */
-
-img {
-    transition: transform 0.5s ease;
-}
-
-/* ============================================
-   LIST ANIMATIONS
-   ============================================ */
-
-ul li {
-    animation: fadeInLeft 0.5s ease-out backwards;
-}
-
-article ul li:nth-child(1) { animation-delay: 0.1s; }
-article ul li:nth-child(2) { animation-delay: 0.2s; }
-article ul li:nth-child(3) { animation-delay: 0.3s; }
-article ul li:nth-child(4) { animation-delay: 0.4s; }
-article ul li:nth-child(5) { animation-delay: 0.5s; }
-
-/* ============================================
-   GLOBAL EFFECTS
-   ============================================ */
-
-html {
-    scroll-behavior: smooth;
-}
-
-#darkToggle:checked + div {
-    animation: pulse 0.3s ease;
-}
-
-article button {
-    transition: all 0.3s ease;
-}
-
-/* ============================================
-   ACCESSIBILITY
-   ============================================ */
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
     </style>
 </head>
 
@@ -418,31 +37,40 @@ article button {
         </nav>
         <div class="flex items-center gap-4 text-sm">
 
-            <label class="inline-flex items-center cursor-pointer">
-                <input id="darkToggle" type="checkbox" class="sr-only peer">
-
-                <div class="relative w-9 h-5 
-    bg-black 
-    border border-black 
-    rounded-full 
-    transition-all duration-300
-
-    peer-focus:outline-none 
-    peer-focus:ring-4 peer-focus:ring-blue-300
-
-    peer-checked:bg-blue-500 
-    peer-checked:border-blue-500
-
-    peer-checked:after:translate-x-full 
-    rtl:peer-checked:after:-translate-x-full
-
-    after:content-[''] after:absolute 
-    after:top-[2px] after:start-[2px] 
-    after:bg-white after:rounded-full 
-    after:h-4 after:w-4 
-    after:transition-all">
-                </div>
-            </label>
+           <!-- From Uiverse.io by Galahhad --> 
+<label class="bb8-toggle">
+      <input id="darkToggle" class="bb8-toggle__checkbox" type="checkbox">
+      <div class="bb8-toggle__container">
+        <div class="bb8-toggle__scenery">
+          <div class="bb8-toggle__star"></div>
+          <div class="bb8-toggle__star"></div>
+          <div class="bb8-toggle__star"></div>
+          <div class="bb8-toggle__star"></div>
+          <div class="bb8-toggle__star"></div>
+          <div class="bb8-toggle__star"></div>
+          <div class="bb8-toggle__star"></div>
+          <div class="tatto-1"></div>
+          <div class="tatto-2"></div>
+          <div class="gomrassen"></div>
+          <div class="hermes"></div>
+          <div class="chenini"></div>
+          <div class="bb8-toggle__cloud"></div>
+          <div class="bb8-toggle__cloud"></div>
+          <div class="bb8-toggle__cloud"></div>
+        </div>
+        <div class="bb8">
+          <div class="bb8__head-container">
+            <div class="bb8__antenna"></div>
+            <div class="bb8__antenna"></div>
+            <div class="bb8__head"></div>
+          </div>
+          <div class="bb8__body"></div>
+        </div>
+        <div class="artificial__hidden">
+          <div class="bb8__shadow"></div>
+        </div>
+      </div>
+    </label>
 
 
             <a href="#"
